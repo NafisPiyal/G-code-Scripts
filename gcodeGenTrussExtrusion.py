@@ -1,11 +1,11 @@
 from math import sqrt
 
-len = int(input('Input side length of triangle(mm):'))
+len = int(input('Input side length of triangle(mm): '))
+tri = int(input('Input number of base triangles: '))
 inp_ext = int(input('Input amount of extrusion(mm): '))
 layers = int(input('Input number of layers: '))
 z_gap = float(input('Input Z gap(mm): '))
 speed = input('Input speed(mm/min): ')
-num_tri = 2
 
 ext = len + inp_ext
 
@@ -21,7 +21,7 @@ for i in range(int(layers)):
     print('G1   X' + str(len/2)           + ' Y' + str(0)                   + ' Z' + str(i*z_gap) + ' F' + speed)
     print('G1   X' + str(-inp_ext)        + ' Y' + str(0)                   + ' Z' + str(i*z_gap) + ' F' + speed)
     
-    for j in range(0,3):
+    for j in range(tri-1):
         x = len*j
         print('G1   X' + str(x+0)                   + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+ext/2)               + ' Y' + str(getY(ext))         + ' Z' + str(i*z_gap) + ' F' + speed)
@@ -63,10 +63,7 @@ for i in range(int(layers)):
     print('G1   X' + str(x+len+inp_ext/2)   + ' Y' + str(getY(-inp_ext))    + ' Z' + str(i*z_gap) + ' F' + speed)
     print('G1   X' + str(x+len)             + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
     print('G1   X' + str(-inp_ext)          + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
-    print('G1   X' + str(0)                 + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
-
-    
-        
-        
+    print('G1   X' + str(0)                 + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)    
+                
 input("Press enter to exit")
 
