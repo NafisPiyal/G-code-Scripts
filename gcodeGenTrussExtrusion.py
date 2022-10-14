@@ -2,12 +2,13 @@ from math import sqrt
 
 len = int(input('Input side length of triangle(mm): '))
 tri = int(input('Input number of base triangles: '))
-inp_ext = int(input('Input amount of extrusion(mm): '))
+ang_ext = int(input('Input amount of angular extrusion(mm): '))
+inp_ext = int(input('Input amount of straight extrusion(mm): '))
 layers = int(input('Input number of layers: '))
 z_gap = float(input('Input Z gap(mm): '))
 speed = input('Input speed(mm/min): ')
 
-ext = len + inp_ext
+ext = len + ang_ext
 
 def getY(num):
     temp = .5 * sqrt(3) * num
@@ -26,21 +27,21 @@ for i in range(int(layers)):
         print('G1   X' + str(x+0)                   + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+ext/2)               + ' Y' + str(getY(ext))         + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len/2)               + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
-        print('G1   X' + str(x+len+inp_ext/2)       + ' Y' + str(-getY(inp_ext))    + ' Z' + str(i*z_gap) + ' F' + speed)
+        print('G1   X' + str(x+len+ang_ext/2)       + ' Y' + str(-getY(ang_ext))    + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len)                 + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+(len/2)-inp_ext)     + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len/2)               + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len/2)               + ' Y' + str(getY(len)+inp_ext) + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len/2)               + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
-        print('G1   X' + str(x+ext)                 + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
+        print('G1   X' + str(x+(len*1.5)+inp_ext)   + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len)                 + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len)                 + ' Y' + str(-inp_ext)          + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len)                 + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
-        print('G1   X' + str(x+(len/2)-(inp_ext/2)) + ' Y' + str(getY(ext))         + ' Z' + str(i*z_gap) + ' F' + speed)
+        print('G1   X' + str(x+(len/2)-(ang_ext/2)) + ' Y' + str(getY(ext))         + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len/2)               + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+(len*1.5)+inp_ext)   + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len*1.5)             + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
-        print('G1   X' + str(x+len-inp_ext/2)       + ' Y' + str(-getY(inp_ext))    + ' Z' + str(i*z_gap) + ' F' + speed)
+        print('G1   X' + str(x+len-ang_ext/2)       + ' Y' + str(-getY(ang_ext))    + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len)                 + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len)                 + ' Y' + str(getY(len)+inp_ext) + ' Z' + str(i*z_gap) + ' F' + speed)
         print('G1   X' + str(x+len)                 + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
@@ -54,7 +55,7 @@ for i in range(int(layers)):
     x += len
     print('G1   X' + str(x+ext/2)           + ' Y' + str(getY(ext))         + ' Z' + str(i*z_gap) + ' F' + speed)
     print('G1   X' + str(x+len/2)           + ' Y' + str(getY(len))         + ' Z' + str(i*z_gap) + ' F' + speed)
-    print('G1   X' + str(x+len+inp_ext/2)   + ' Y' + str(-getY(inp_ext))    + ' Z' + str(i*z_gap) + ' F' + speed)
+    print('G1   X' + str(x+len+ang_ext/2)   + ' Y' + str(-getY(ang_ext))    + ' Z' + str(i*z_gap) + ' F' + speed)
     print('G1   X' + str(x+len)             + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
     print('G1   X' + str(x+(len/2)-inp_ext) + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
     print('G1   X' + str(x+len/2)           + ' Y' + str(0)                 + ' Z' + str(i*z_gap) + ' F' + speed)
