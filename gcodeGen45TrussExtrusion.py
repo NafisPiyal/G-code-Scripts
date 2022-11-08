@@ -1,5 +1,5 @@
 len = int(input('Input side length of triangle(mm): '))
-ext = int(input('Input amount of straight extrusion(mm): '))
+ext = int(input('Input amount of extrusion(mm): '))
 layers = int(input('Input number of layers: '))
 z_gap = float(input('Input Z gap(mm): '))
 speed = input('Input speed(mm/min): ')
